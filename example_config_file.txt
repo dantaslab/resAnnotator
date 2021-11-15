@@ -1,0 +1,77 @@
+---
+# This is the example of the config file provided to users.
+#
+
+# general parameters used throughout the program:
+input_type: protein
+alignment_tool: BLAST # two options for aligning reads to databases: [BLAST|DIAMOND]
+log_level: INFO # log options ["DEBUG","INFO","WARNING","ERROR","CRITICAL"]
+
+# The order of the database in which you would like the program to align sequences
+order:
+  - CARD
+  - Resfinder
+  - Resfams
+  - NCBIAMR
+  - Pfam
+  - Tigrfam
+
+# Database parameters
+indexes:
+  CARD:
+    dbtype: BLAST
+    seqtype: prot # OPTIONS [prot|nucl]
+    dbpath: /scratch/ref/gdlab/CARD/latest
+    dbname: card_proteinhomologs.fasta
+    query_cov: 95.0
+    subject_cov: 95.0
+    identity_cutoff: 95.0
+    evalue: 1e-10
+    params: '--max-target-seqs 1'
+
+  Resfinder:
+    dbtype: BLAST
+    seqtype: nucl # OPTIONS [prot|nucl]
+    dbpath: /scratch/ref/gdlab/resfinder_db/latest
+    dbname: resfinder_merged_seqs.fasta
+    query_cov: 95.0
+    subject_cov: 95.0
+    identity_cutoff: 95.0
+    evalue: 1e-10
+    params: '--max-target-seqs 1'
+    
+  NCBIAMR:
+    dbtype: HMM
+    seqtype: prot # OPTIONS [prot|nucl]
+    dbpath: /scratch/ref/gdlab/ncbiAMRFinderdb/data/latest
+    dbname: AMR.LIB
+    gathering_threshold: True
+    evalue: 1e-10
+    params: ''
+
+  Resfams:
+    dbtype: HMM
+    seqtype: prot
+    dbpath: /scratch/ref/gdlab/hmm/Resfams/latest
+    dbname: ResFams.hmm
+    gathering_threshold: True # [True|False]
+    evalue: 1e-10 # e-value is used, if gathering threshold parameter is set to FALSE
+    params: ''
+
+  Pfam:
+    dbtype: HMM
+    seqtype: prot
+    dbpath: /scratch/ref/gdlab/hmm/Pfam/latest
+    dbname: Pfam-A.hmm
+    gathering_threshold: True # [True|False]
+    evalue: 1e-10 # e-value is used, if gathering threshold parameter is set to FALSE
+    params: ''
+
+  Tigrfam:
+    dbtype: HMM
+    seqtype: prot
+    dbpath: /scratch/ref/gdlab/hmm/TIGRFAM/latest
+    dbname: TIGRFAMs_12.0_HMM.LIB
+    gathering_threshold: True # [True|False]
+    evalue: 1e-10 # e-value is used, if gathering threshold parameter is set to FALSE
+    params: ''
