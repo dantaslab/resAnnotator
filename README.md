@@ -1,6 +1,7 @@
-# resAnnotator.py -  searches amino acid sequence against known ARG specific databases sequentially and assigns annotation using BLAST and HMM approach.
+# resAnnotator.py 
+Description: searches amino acid sequence against known ARG specific databases sequentially and assigns annotation using BLAST and HMM approach.
 
-# Usage
+## Usage
       resAnnotator [-h] -i INPUT_SEQUENCE -o OUTPUT_DIR -c CONFIG_FILE
                     [--clean] [-t NUM_THREADS] [-p PREFIX] [-v]
 
@@ -27,4 +28,4 @@
     sequences using BLAST(Uniprot, CARD, Resfinder) and/orHMM (Resfams, PFam-A)
     databases
     
-# Config file template: example_config_file.txt
+## Config file template: example_config_file.txt
